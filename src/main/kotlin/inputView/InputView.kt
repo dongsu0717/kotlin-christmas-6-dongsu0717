@@ -1,6 +1,7 @@
 package inputView
 
 import camp.nextstep.edu.missionutils.Console
+import data.Menu
 
 class InputView {
     var inputViewCondition = InputViewCondition()
@@ -18,6 +19,26 @@ class InputView {
                 println(e.message)
             }
         }
+    }
+
+    fun readMenu(): Map<Menu, Int> {
+        println(MESSAGE_ORDER_MENU)
+        var input = Console.readLine()
+        while (true) {
+            try {
+                val orderList = inputViewCondition.menuCheck(input)
+                for ((menu, quantity) in orderList) {
+                    println("$menu - $quantity 개")
+                }
+                println("총 가격: ${calculateTotalPrice(orderList)} 원")
+                return orderList
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
+    }
+    fun calculateTotalPrice(orderDetails: Map<Menu, Int>): Int {
+        return orderDetails.entries.sumBy { (menu, quantity) -> menu.price * quantity }
     }
 
     companion object {

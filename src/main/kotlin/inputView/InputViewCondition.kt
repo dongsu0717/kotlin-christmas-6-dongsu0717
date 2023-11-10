@@ -1,21 +1,29 @@
 package inputView
 
-import kotlin.math.E
+import data.Menu
 
 class InputViewCondition {
 
     fun dateCheck(input: String) {
-        if (!((input.toInt() >= MINIMUM_DAY) && (input.toInt() <= MAXIMUM_DAY))) {
-            throw IllegalArgumentException(ERR0R_DATE_RANGE)
-        } else if (input.isBlank()) {
-            throw IllegalArgumentException(ERROR_BLACK)
-        } else if (input.isEmpty()) {
-            throw  IllegalArgumentException(ERROR_EMPTY)
-        } else if (!input.matches(Regex("\\d+"))) {
-            throw IllegalArgumentException(ERROR_NOT_NUMBER)
+        when {
+        !(input.toInt() in MINIMUM_DAY..MAXIMUM_DAY) -> throw IllegalArgumentException(ERR0R_DATE_RANGE)
+        input.isBlank() -> throw IllegalArgumentException(ERROR_BLACK)
+        input.isEmpty() -> throw IllegalArgumentException(ERROR_EMPTY)
+        !input.matches(Regex("\\d+")) -> throw IllegalArgumentException(ERROR_NOT_NUMBER)
         }
     }
 
+    fun menuCheck(input: String): Map<Menu, Int> {
+        val menuEntries = input.split(",")
+        return menuEntries.map { entry ->
+            val parts = entry.split("-")
+            val menuName = parts[0].trim()
+            val quantity = parts[1].trim().toInt()
+
+            val menu = Menu.valueOf(menuName)
+            menu to quantity
+        }.toMap()
+    }
 
     companion object{
         const val MAXIMUM_DAY = 31
