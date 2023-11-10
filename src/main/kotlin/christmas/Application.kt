@@ -1,5 +1,11 @@
 package christmas
 
+import inputView.InputView
+
 fun main() {
-    TODO("프로그램 구현")
+    var a = InputView()
+    var b = a.readDate()
+    println(b)
+
+
 }
