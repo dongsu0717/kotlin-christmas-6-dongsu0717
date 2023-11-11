@@ -27,18 +27,12 @@ class InputView {
         while (true) {
             try {
                 val orderList = inputViewCondition.menuCheck(input)
-                for ((menu, quantity) in orderList) {
-                    println("$menu - $quantity 개")
-                }
-                println("총 가격: ${calculateTotalPrice(orderList)} 원")
+
                 return orderList
             } catch (e: IllegalArgumentException) {
                 println(e.message)
             }
         }
-    }
-    fun calculateTotalPrice(orderDetails: Map<Menu, Int>): Int {
-        return orderDetails.entries.sumBy { (menu, quantity) -> menu.price * quantity }
     }
 
     companion object {
