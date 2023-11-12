@@ -1,8 +1,8 @@
 package data
 
-class Amount(val orderList: Map<Menu, Int> ) {
+class Amount() {
 
-    fun beforeDiscount(): Int {
+    fun beforeDiscount(orderList: Map<Menu, Int>): Int {
         return orderList.entries.sumBy { (menu, quantity) -> menu.price * quantity }
     }
 }
