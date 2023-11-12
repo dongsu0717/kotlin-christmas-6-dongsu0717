@@ -25,6 +25,7 @@ class InputViewCondition {
         }.toMap()
     }
 
+
     companion object{
         const val MAXIMUM_DAY = 31
         const val MINIMUM_DAY = 1
