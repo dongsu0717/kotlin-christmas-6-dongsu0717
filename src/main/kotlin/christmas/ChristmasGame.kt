@@ -12,9 +12,13 @@ class ChristmasGame {
         inputView.readDate()
         var menuList = inputView.readMenu()             // menuList = 주문메뉴 리스트
         var outputView = OutputView(menuList)
+
         outputView.printMenu()
         println()
-        outputView.printAmountBeforeDiscount()
 
+        outputView.printAmountBeforeDiscount()
+        println()
+
+        outputView.printGiftMenu()
     }
 }
