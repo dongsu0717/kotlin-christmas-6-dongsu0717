@@ -3,14 +3,15 @@ package outputView
 import data.Amount
 import data.Menu
 
-class OutputView(orderList: Map<Menu, Int>) {
+class OutputView(val orderList: Map<Menu, Int>,var date: Int) {
     var amount = Amount()
-    var orderList = orderList
     var amountBeforeDiscount = amount.beforeDiscount(orderList)
     fun printMenu() {
+        println(MESSAGE_SEE_BENEFITS_FRONT+"$date"+ MESSAGE_SEE_BENEFITS_BACK)
+        println()
         println(MESSAGE_ORDER_MENU_LIST)
         for ((menu, quantity) in orderList) {
-            println("${menu} ${quantity} 개")
+            println("${menu} ${quantity}개")
         }
     }
 
@@ -33,8 +34,9 @@ class OutputView(orderList: Map<Menu, Int>) {
 
     }
 
-
     companion object {
+        const val MESSAGE_SEE_BENEFITS_FRONT = "12월 "
+        const val MESSAGE_SEE_BENEFITS_BACK = "일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!"
         const val MESSAGE_ORDER_MENU_LIST = "<주문 메뉴>"
         const val MESSAGE_AMOUNT_BEFORE_DISCOUNT = "<할인 전 총주문 금액>"
         const val MESSAGE_GIFT_MENU = "<증정 메뉴>"

@@ -1,17 +1,18 @@
 package christmas
 
 import data.Amount
+import data.Event
 import inputView.InputView
 import outputView.OutputView
 
 class ChristmasGame {
     var inputView = InputView()
-    var amount = Amount()
+
 
     fun play(){
-        inputView.readDate()
+        var date = inputView.readDate()
         var menuList = inputView.readMenu()             // menuList = 주문메뉴 리스트
-        var outputView = OutputView(menuList)
+        var outputView = OutputView(menuList,date)
 
         outputView.printMenu()
         println()
@@ -20,5 +21,10 @@ class ChristmasGame {
         println()
 
         outputView.printGiftMenu()
+        println()
+
+        var event = Event(date)
+        println(event.weekdayDiscount(menuList))
+
     }
 }
