@@ -26,6 +26,8 @@ class ChristmasGame {
         var event = Event(date)
         println(event.weekdayDiscount(menuList))
         println(event.weekendDiscount(menuList))
+        println(event.specialDiscount())
+        println(event.dDayChristmas())
 
     }
 }
