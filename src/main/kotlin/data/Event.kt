@@ -20,7 +20,6 @@ class Event(val date: Int) {
         var disconutPrice = when (visitedDay) {
             DayOfWeek.SUNDAY, DayOfWeek.MONDAY, DayOfWeek.TUESDAY, DayOfWeek.WEDNESDAY, DayOfWeek.THURSDAY ->
                 WEEKDAY_DISCOUNT
-
             DayOfWeek.FRIDAY, DayOfWeek.SATURDAY ->
                 NOTHING_DISCOUNT
         }
@@ -37,7 +36,6 @@ class Event(val date: Int) {
         var disconutPrice = when (visitedDay) {
             DayOfWeek.FRIDAY, DayOfWeek.SATURDAY ->
                 WEEKEND_DISCOUNT
-
             DayOfWeek.SUNDAY, DayOfWeek.MONDAY, DayOfWeek.TUESDAY, DayOfWeek.WEDNESDAY, DayOfWeek.THURSDAY ->
                 NOTHING_DISCOUNT
         }
