@@ -2,15 +2,15 @@ package data
 
 import java.time.DayOfWeek
 import java.time.LocalDate
-import kotlin.time.times
 
 class Event(val date: Int) {
     var inputDate = LocalDate.of(YEAR, MONTH, date)
     var visitedDay = inputDate.dayOfWeek
+
     fun dDayChristmas(): Int {
-        var discountPrice = 0
-        if (date >=1 && date <= 25){
-            discountPrice =  D_DAY_STANDARD_DISCOUNT + (date-1) * 100
+        var discountPrice = NOTHING_DISCOUNT
+        if (date >=THE_FIRST_DAY_DECEMBER && date <= CHRISTMAS_DAY){
+            discountPrice =  D_DAY_STANDARD_DISCOUNT + (date - 1) * D_DAY_ADD_DISCOUNT
         }
         return discountPrice
     }
@@ -33,7 +33,7 @@ class Event(val date: Int) {
     }
 
     fun weekendDiscount(orderList: Map<Menu, Int>): Int {
-        var count = 0
+        var count = NOTHING
         var disconutPrice = when (visitedDay) {
             DayOfWeek.FRIDAY, DayOfWeek.SATURDAY ->
                 WEEKEND_DISCOUNT
@@ -50,11 +50,11 @@ class Event(val date: Int) {
     }
 
     fun specialDiscount(): Int {
-        var disconutPrice = if (visitedDay == DayOfWeek.SUNDAY || date == CHRISTMAS_DAY) {
-            return SPECIAL_DISCOUNT
-        } else {
-            return NOTHING_DISCOUNT
+        var disconutPrice = NOTHING_DISCOUNT
+        if (visitedDay == DayOfWeek.SUNDAY || date == CHRISTMAS_DAY) {
+            disconutPrice =  SPECIAL_DISCOUNT
         }
+        return disconutPrice
     }
 
     fun present() {
@@ -68,11 +68,14 @@ class Event(val date: Int) {
     companion object {
         const val MONTH = 12
         val YEAR = LocalDate.now().year
+        const val THE_FIRST_DAY_DECEMBER = 1
         const val CHRISTMAS_DAY = 25
         const val D_DAY_STANDARD_DISCOUNT = 1000
+        const val D_DAY_ADD_DISCOUNT = 100
         const val WEEKDAY_DISCOUNT = 2023
         const val WEEKEND_DISCOUNT = 2023
         const val SPECIAL_DISCOUNT = 1000
         const val NOTHING_DISCOUNT = 0
+        const val NOTHING = 0
     }
 }

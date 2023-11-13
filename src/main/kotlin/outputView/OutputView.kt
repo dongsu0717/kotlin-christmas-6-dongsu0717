@@ -29,8 +29,28 @@ class OutputView(val orderList: Map<Menu, Int>,var date: Int) {
         println(MESSAGE_GIFT_MENU_NOTHING)
     }
 
-    fun printbenefitsDetails() {
+    fun printbenefitsDetails(christmas: Int,
+                             weekday: Int,
+                             weekend: Int,
+                             special: Int,
+                             gift: Boolean) {
         println(MESSAGE_BENEFITS_DETAILS)
+        if (christmas != 0) println(CHRISTMAS_D_DAY_DISCOUNT+"$-{christmas}원")
+        if (weekday != 0) println(WEEKDAY_DISCOUNT+"-${weekday}원")
+        if (weekend != 0) println(WEEKEND_DISCOUNT+"-${weekend}원")
+        if (special != 0) println(SPECIAL_DISCOUNT+"-${special}원")
+        if (gift) println(GIFT_EVENT+"-${Menu.샴페인.price}원")
+    }
+
+    fun printTotalBenefits() {
+
+    }
+
+    fun printAmountAfterDisocunt() {
+
+    }
+
+    fun printEventBadge() {
 
     }
 
@@ -44,6 +64,11 @@ class OutputView(val orderList: Map<Menu, Int>,var date: Int) {
         val MESSAGE_GIFT_MENU_KIND = "${Menu.샴페인} 1개"
         const val MESSAGE_GIFT_MENU_NOTHING = "없음"
         const val MESSAGE_BENEFITS_DETAILS = "<혜택 내역>"
+        const val CHRISTMAS_D_DAY_DISCOUNT = "크리스마스 디데이 할인: "
+        const val WEEKDAY_DISCOUNT = "평일 할인: "
+        const val WEEKEND_DISCOUNT = "주말 할인: "
+        const val SPECIAL_DISCOUNT = "특별 할인: "
+        const val GIFT_EVENT = "증정 이벤트: "
     }
 
 }
