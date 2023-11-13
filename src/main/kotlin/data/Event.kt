@@ -20,9 +20,10 @@ class Event(val date: Int) {
         }
         for ((menu, quantity) in orderList) {
             if(menu.type == "디저트"){
-                count ++
+                count += quantity
             }
         }
+        println(count)
         return disconutPrice * count
     }
 
