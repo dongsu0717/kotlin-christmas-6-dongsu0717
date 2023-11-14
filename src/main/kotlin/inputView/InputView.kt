@@ -1,7 +1,7 @@
 package inputView
 
 import camp.nextstep.edu.missionutils.Console
-import data.Menu
+import data.MenuList
 
 class InputView {
     var inputViewCondition = InputViewCondition()
@@ -21,7 +21,7 @@ class InputView {
         }
     }
 
-    fun readMenu(): Map<Menu, Int> {
+    fun readMenu(): Map<MenuList, Int> {
         println(MESSAGE_ORDER_MENU)
         var input = Console.readLine()
         while (true) {

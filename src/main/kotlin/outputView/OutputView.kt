@@ -1,10 +1,10 @@
 package outputView
 
 import data.Amount
-import data.Menu
+import data.MenuList
 
 //val orderList: Map<Menu, Int>,var date: Int  <- 이 파라미터 빼자
-class OutputView(val orderList: Map<Menu, Int>, var date: Int) {
+class OutputView(val orderList: Map<MenuList, Int>, var date: Int) {
     var amount = Amount()
     var amountBeforeDiscount = amount.beforeDiscount(orderList)
 
@@ -45,7 +45,7 @@ class OutputView(val orderList: Map<Menu, Int>, var date: Int) {
         if (weekday != NOTHING) println(WEEKDAY_DISCOUNT + "-${weekday}원")
         if (weekend != NOTHING) println(WEEKEND_DISCOUNT + "-${weekend}원")
         if (special != NOTHING) println(SPECIAL_DISCOUNT + "-${special}원")
-        if (gift) println(GIFT_EVENT + "-${Menu.샴페인.price}원")
+        if (gift) println(GIFT_EVENT + "-${MenuList.샴페인.price}원")
         if(christmas == NOTHING &&
             weekday == NOTHING &&
             weekend == NOTHING &&
@@ -82,7 +82,7 @@ class OutputView(val orderList: Map<Menu, Int>, var date: Int) {
 
         const val MESSAGE_GIFT_MENU = "<증정 메뉴>"
         const val GIFT_MENU_CRITERIA_PRICE = 120_000
-        val MESSAGE_GIFT_MENU_KIND = "${Menu.샴페인} 1개"
+        val MESSAGE_GIFT_MENU_KIND = "${MenuList.샴페인} 1개"
         const val MESSAGE_NOTHING_SERVICE = "없음"
 
         const val MESSAGE_BENEFITS_DETAILS = "<혜택 내역>"

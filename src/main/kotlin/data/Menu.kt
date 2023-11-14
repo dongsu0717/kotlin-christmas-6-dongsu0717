@@ -1,6 +1,6 @@
 package data
 
-enum class Menu(val type: String,val price: Int) {
+enum class MenuList(val type: String,val price: Int) {
     양송이수프("애피타이저", 6_000),
     타파스("애피타이저", 5_500),
     시저샐러드("애피타이저", 8_000),

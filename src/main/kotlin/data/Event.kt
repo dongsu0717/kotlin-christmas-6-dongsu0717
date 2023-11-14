@@ -15,7 +15,7 @@ class Event(val date: Int) {
         return discountPrice
     }
 
-    fun weekdayDiscount(orderList: Map<Menu, Int>): Int {
+    fun weekdayDiscount(orderList: Map<MenuList, Int>): Int {
         var count = 0
         var disconutPrice = when (visitedDay) {
             DayOfWeek.SUNDAY, DayOfWeek.MONDAY, DayOfWeek.TUESDAY, DayOfWeek.WEDNESDAY, DayOfWeek.THURSDAY ->
@@ -32,7 +32,7 @@ class Event(val date: Int) {
         return disconutPrice * count
     }
 
-    fun weekendDiscount(orderList: Map<Menu, Int>): Int {
+    fun weekendDiscount(orderList: Map<MenuList, Int>): Int {
         var count = NOTHING
         var disconutPrice = when (visitedDay) {
             DayOfWeek.FRIDAY, DayOfWeek.SATURDAY ->
