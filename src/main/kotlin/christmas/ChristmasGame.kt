@@ -7,6 +7,7 @@ import outputView.OutputView
 
 class ChristmasGame {
     var inputView = InputView()
+    var amount = Amount()
 
     fun play(){
         var date = inputView.readDate()
@@ -31,16 +32,8 @@ class ChristmasGame {
         outputView.printBenefitsDetails(christmasDiscount,weekdayDiscount,weekendDiscount,specialDiscount,gift)
         println()
 
-        outputView.printTotalBenefits(christmasDiscount,weekdayDiscount,weekendDiscount,specialDiscount,gift)
-        println()
-
-
-
-
-
-
-
-
+        var totalBenefits = amount.totalBenefits(christmasDiscount,weekdayDiscount,weekendDiscount,specialDiscount,gift)
+        outputView.printTotalBenefits(totalBenefits)
 
     }
 }
