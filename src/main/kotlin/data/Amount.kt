@@ -17,14 +17,13 @@ class Amount() {
             true -> Menu.샴페인.price
             false -> OutputView.NOTHING
         }
-        return  christmas + weekday + weekend + special + giftPrice
+        return christmas + weekday + weekend + special + giftPrice
     }
 
-    fun AfterDiscount() {
-
-    }
-
-    companion object{
-        const val NOTHING = 0
+    fun discount(christmas: Int,
+                 weekday: Int,
+                 weekend: Int,
+                 special: Int,): Int {
+        return christmas + weekday + weekend + special
     }
 }

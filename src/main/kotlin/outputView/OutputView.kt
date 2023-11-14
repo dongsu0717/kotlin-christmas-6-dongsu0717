@@ -8,6 +8,7 @@ class OutputView(val orderList: Map<Menu, Int>, var date: Int) {
     var amount = Amount()
     var amountBeforeDiscount = amount.beforeDiscount(orderList)
 
+
     fun printMenu() {
         println(MESSAGE_SEE_BENEFITS_FRONT + "$date" + MESSAGE_SEE_BENEFITS_BACK)
         println()
@@ -61,14 +62,14 @@ class OutputView(val orderList: Map<Menu, Int>, var date: Int) {
         println(MESSAGE_NOTHING_SERVICE)
     }
 
-    fun printAmountResult() {
+    fun printAmountResult(discount: Int) {
         println(MESSAGE_AMOUNT_AFTER_DISCOUNT)
-
+        println("${amountBeforeDiscount-discount}원")
     }
 
-    fun printEventBadge() {
+    fun printEventBadge(badge: String) {
         println(MESSAGE_EVENT_BADGE)
-
+        println(badge)
     }
 
     companion object {

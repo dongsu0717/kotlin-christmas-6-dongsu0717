@@ -34,6 +34,13 @@ class ChristmasGame {
 
         var totalBenefits = amount.totalBenefits(christmasDiscount,weekdayDiscount,weekendDiscount,specialDiscount,gift)
         outputView.printTotalBenefits(totalBenefits)
+        println()
 
+        var discount = amount.discount(christmasDiscount,weekdayDiscount,weekendDiscount,specialDiscount)
+        outputView.printAmountResult(discount)
+        println()
+
+        var badge = event.giftBadge(totalBenefits)
+        outputView.printEventBadge(badge)
     }
 }
