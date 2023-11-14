@@ -5,7 +5,7 @@ import data.MenuList
 
 
 class InputViewCondition {
-    var amount = Amount()
+
     fun dateCheck(input: String) {
         if(!input.matches(Regex("\\d+"))) {
             throw IllegalArgumentException(ERROR + ERROR_NOT_NUMBER)
@@ -21,6 +21,12 @@ class InputViewCondition {
         }
     }
 
+    fun numCheck(order: Map<MenuList,String>){
+        if (order.any { !it.value.matches(Regex("\\d+")) }) {
+            throw IllegalArgumentException(ERROR + ERROR_INCORRECT_ORDER )
+        }
+    }
+
     fun menuCheck(orderList: Map<MenuList,Int>) {
         if (orderList.isEmpty()) {
             throw IllegalArgumentException(ERROR + ERROR_BLACK)
@@ -30,16 +36,12 @@ class InputViewCondition {
             throw IllegalArgumentException(ERROR + ERROR_MAXIMUM_ORDER_OF_NUMBER)
         }
 
-        if (orderList.values.sum() <= MINIMUM_ORDER_NUMBER ) {
+        if (orderList.values.sum() < MINIMUM_ORDER_NUMBER ) {
             throw IllegalArgumentException(ERROR + ERROR_MINIMUM_ORDER_OF_NUMBER)
         }
 
         if (orderList.filter { it.key.type == MENULIST_TYPE_DRINK }.isNotEmpty() && orderList.size == 1) {
             throw IllegalArgumentException(ERROR + ERROR_NOT_ONLY_DRINK)
-        }
-
-        if (amount.beforeDiscount(orderList) < MINIMUM_PRICE) {
-            throw IllegalArgumentException(ERROR + ERROR_MINIMUM_ORDER_PRICE)
         }
 
         if (orderList.keys.distinct().size != orderList.keys.size) {
@@ -55,7 +57,6 @@ class InputViewCondition {
     companion object {
         const val MAXIMUM_DAY = 31
         const val MINIMUM_DAY = 1
-        const val MINIMUM_PRICE = 10_000
         const val MAXIMUM_ORDER_NUMBER = 20
         const val MINIMUM_ORDER_NUMBER = 1
 
@@ -66,12 +67,13 @@ class InputViewCondition {
         const val ERROR_BLACK = "공백없이 입력해 주세요"
         const val ERROR_EMPTY = "아무것도 입력하지 않았습니다. 다시 입력해주세요"
         const val ERROR_NOT_NUMBER = "유효하지 않은 날짜입니다. 다시 입력해 주세요."
+
         const val ERROR_MAXIMUM_ORDER_OF_NUMBER = "최대 주문 갯수는 20개입니다."
         const val ERROR_MINIMUM_ORDER_OF_NUMBER = "주문 갯수는 1개 이상이어야 합니다."
         const val ERROR_NOT_ONLY_DRINK = "음료만 주문할 수 없습니다."
-        const val ERROR_MINIMUM_ORDER_PRICE = "총 주문 가격은 10,000원 이상이어야 합니다."
         const val ERROR_REDUNDANT_ORDER = "중복해서 주문할 수 없습니다."
         const val ERROR_NOT_IN_MENU = "없는 메뉴는 주문 할 수 없습니다."
+        const val ERROR_INCORRECT_ORDER = "유효하지 않은 주문입니다. 다시 입력해 주세요."
 
     }
 }

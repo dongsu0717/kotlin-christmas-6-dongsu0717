@@ -3,7 +3,6 @@ package outputView
 import data.Amount
 import data.MenuList
 
-//val orderList: Map<Menu, Int>,var date: Int  <- 이 파라미터 빼자
 class OutputView(val orderList: Map<MenuList, Int>, var date: Int) {
     var amount = Amount()
     var amountBeforeDiscount = amount.beforeDiscount(orderList)
@@ -55,7 +54,7 @@ class OutputView(val orderList: Map<MenuList, Int>, var date: Int) {
 
     fun printTotalBenefits(totalBenefits: Int) {
         println(MESSAGE_TOTAL_BENEFITS_DETAILS)
-        if (totalBenefits !== 0){
+        if (totalBenefits !== ZERO_BENEFITS){
             println("-${totalBenefits}원")
             return
         }
@@ -76,16 +75,10 @@ class OutputView(val orderList: Map<MenuList, Int>, var date: Int) {
         const val MESSAGE_SEE_BENEFITS_FRONT = "12월 "
         const val MESSAGE_SEE_BENEFITS_BACK = "일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!"
 
-        const val MESSAGE_ORDER_MENU_LIST = "<주문 메뉴>"
-
-        const val MESSAGE_AMOUNT_BEFORE_DISCOUNT = "<할인 전 총주문 금액>"
-
-        const val MESSAGE_GIFT_MENU = "<증정 메뉴>"
         const val GIFT_MENU_CRITERIA_PRICE = 120_000
         val MESSAGE_GIFT_MENU_KIND = "${MenuList.샴페인} 1개"
         const val MESSAGE_NOTHING_SERVICE = "없음"
 
-        const val MESSAGE_BENEFITS_DETAILS = "<혜택 내역>"
         const val CHRISTMAS_D_DAY_DISCOUNT = "크리스마스 디데이 할인: "
         const val WEEKDAY_DISCOUNT = "평일 할인: "
         const val WEEKEND_DISCOUNT = "주말 할인: "
@@ -93,10 +86,14 @@ class OutputView(val orderList: Map<MenuList, Int>, var date: Int) {
         const val GIFT_EVENT = "증정 이벤트: "
         const val NOTHING = 0
 
+        const val ZERO_BENEFITS = 0
+
+        const val MESSAGE_ORDER_MENU_LIST = "<주문 메뉴>"
+        const val MESSAGE_AMOUNT_BEFORE_DISCOUNT = "<할인 전 총주문 금액>"
+        const val MESSAGE_GIFT_MENU = "<증정 메뉴>"
+        const val MESSAGE_BENEFITS_DETAILS = "<혜택 내역>"
         const val MESSAGE_TOTAL_BENEFITS_DETAILS = "<총혜택 금액>"
-
         const val MESSAGE_AMOUNT_AFTER_DISCOUNT = "<할인 후 예상 결제 금액>"
-
         const val MESSAGE_EVENT_BADGE = "<12월 이벤트 배지>"
     }
 
