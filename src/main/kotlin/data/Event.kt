@@ -58,9 +58,9 @@ class Event(val date: Int) {
     }
 
     fun giftBadge(totalBenefits: Int): String {
-        return if(totalBenefits in BADGE_STANDARD_ZERO..<BADGE_STANDARD_STAR){
+        return if (totalBenefits in BADGE_STANDARD_ZERO..<BADGE_STANDARD_STAR) {
             BADGE_NOTHING
-        } else if(totalBenefits in BADGE_STANDARD_STAR..<BADGE_STANDARD_TREE) {
+        } else if (totalBenefits in BADGE_STANDARD_STAR..<BADGE_STANDARD_TREE) {
             STAR
         } else if (totalBenefits in BADGE_STANDARD_TREE..<BADGE_STANDARD_SANTA) {
             TREE

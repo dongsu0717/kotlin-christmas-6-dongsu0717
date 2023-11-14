@@ -2,9 +2,11 @@ package inputView
 
 import camp.nextstep.edu.missionutils.Console
 import data.MenuList
+import data.Restaurant
 
 class InputView {
     var inputViewCondition = InputViewCondition()
+    var restaurant = Restaurant()
 
     fun readDate(): Int {
         println(MESSAGE_GREETING)
@@ -26,7 +28,7 @@ class InputView {
         var input = Console.readLine()
         while (true) {
             try {
-                val orderList = inputViewCondition.menuCheck(input)
+                val orderList = restaurant.order(input)
 
                 return orderList
             } catch (e: IllegalArgumentException) {
