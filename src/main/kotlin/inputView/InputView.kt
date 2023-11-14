@@ -25,10 +25,11 @@ class InputView {
 
     fun readMenu(): Map<MenuList, Int> {
         println(MESSAGE_ORDER_MENU)
-        var input = Console.readLine()
         while (true) {
             try {
+                var input = Console.readLine()
                 val orderList = restaurant.order(input)
+                inputViewCondition.menuCheck(orderList)
 
                 return orderList
             } catch (e: IllegalArgumentException) {

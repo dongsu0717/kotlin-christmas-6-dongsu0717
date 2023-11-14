@@ -25,7 +25,7 @@ class Event(val date: Int) {
                 NOTHING_DISCOUNT
         }
         for ((menu, quantity) in orderList) {
-            if (menu.type == "디저트") {
+            if (menu.type == MENULIST_TYPE_DESSERT) {
                 count += quantity
             }
         }
@@ -42,7 +42,7 @@ class Event(val date: Int) {
                 NOTHING_DISCOUNT
         }
         for ((menu, quantity) in orderList) {
-            if (menu.type == "메인") {
+            if (menu.type == MENULIST_TYPE_MAIN) {
                 count += quantity
             }
         }
@@ -70,6 +70,10 @@ class Event(val date: Int) {
     companion object {
         const val MONTH = 12
         val YEAR = LocalDate.now().year
+
+        const val MENULIST_TYPE_DESSERT = "디저트"
+        const val MENULIST_TYPE_MAIN = "메인"
+
         const val THE_FIRST_DAY_DECEMBER = 1
         const val CHRISTMAS_DAY = 25
         const val D_DAY_STANDARD_DISCOUNT = 1000

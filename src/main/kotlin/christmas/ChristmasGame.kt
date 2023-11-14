@@ -11,7 +11,7 @@ class ChristmasGame {
 
     fun play(){
         var date = inputView.readDate()
-        var menuList = inputView.readMenu()             // menuList = 주문메뉴 리스트
+        var menuList = inputView.readMenu()
         var outputView = OutputView(menuList,date)
 
         outputView.printMenu()
