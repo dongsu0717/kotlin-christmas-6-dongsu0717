@@ -1,4 +1,4 @@
-package data
+package christmas.data
 
 class Restaurant {
     fun order(input: String): Map<MenuList, String> {
@@ -14,6 +14,6 @@ class Restaurant {
     }
 
     fun ValueToInt(orderList: Map<MenuList, String>): Map<MenuList, Int> {
-        return orderList.mapValues{ it.value.toInt() }
+        return orderList.mapValues { it.value.toInt() }
     }
 }

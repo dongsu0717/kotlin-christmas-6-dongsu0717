@@ -1,6 +1,6 @@
-package data
+package christmas.data
 
-import outputView.OutputView
+import christmas.outputView.OutputView
 
 class Amount() {
 

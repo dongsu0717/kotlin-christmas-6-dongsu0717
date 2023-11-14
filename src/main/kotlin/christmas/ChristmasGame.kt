@@ -1,9 +1,9 @@
 package christmas
 
-import data.Amount
-import data.Event
-import inputView.InputView
-import outputView.OutputView
+import christmas.data.Amount
+import christmas.data.Event
+import christmas.inputView.InputView
+import christmas.outputView.OutputView
 
 class ChristmasGame {
     var inputView = InputView()

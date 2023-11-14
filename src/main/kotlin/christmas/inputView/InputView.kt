@@ -1,8 +1,8 @@
-package inputView
+package christmas.inputView
 
 import camp.nextstep.edu.missionutils.Console
-import data.MenuList
-import data.Restaurant
+import christmas.data.MenuList
+import christmas.data.Restaurant
 
 class InputView {
     var inputViewCondition = InputViewCondition()

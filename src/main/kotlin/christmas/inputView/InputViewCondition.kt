@@ -1,7 +1,7 @@
-package inputView
+package christmas.inputView
 
-import data.Amount
-import data.MenuList
+import christmas.data.Amount
+import christmas.data.MenuList
 
 
 class InputViewCondition {

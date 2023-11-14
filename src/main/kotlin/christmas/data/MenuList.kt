@@ -1,4 +1,4 @@
-package data
+package christmas.data
 
 enum class MenuList(val type: String,val price: Int) {
     양송이수프("애피타이저", 6_000),

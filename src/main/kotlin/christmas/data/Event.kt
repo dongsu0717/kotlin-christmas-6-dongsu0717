@@ -1,4 +1,4 @@
-package data
+package christmas.data
 
 import java.time.DayOfWeek
 import java.time.LocalDate

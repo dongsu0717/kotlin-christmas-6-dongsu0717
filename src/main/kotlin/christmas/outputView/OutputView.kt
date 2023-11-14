@@ -1,7 +1,7 @@
-package outputView
+package christmas.outputView
 
-import data.Amount
-import data.MenuList
+import christmas.data.Amount
+import christmas.data.MenuList
 
 class OutputView(val orderList: Map<MenuList, Int>, var date: Int) {
     var amount = Amount()
