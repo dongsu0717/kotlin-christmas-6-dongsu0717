@@ -17,9 +17,10 @@ class OutputView(val orderList: Map<MenuList, Int>, var date: Int) {
         }
     }
 
-    fun printAmountBeforeDiscount() {
+    fun printAmountBeforeDiscount(): Int {
         println(MESSAGE_AMOUNT_BEFORE_DISCOUNT)
-        println(amountBeforeDiscount)
+        println("$amountBeforeDiscount 원")
+        return amountBeforeDiscount
     }
 
     fun printGiftMenu(): Boolean {
@@ -40,22 +41,31 @@ class OutputView(val orderList: Map<MenuList, Int>, var date: Int) {
         gift: Boolean,
     ) {
         println(MESSAGE_BENEFITS_DETAILS)
-        if (christmas != NOTHING) println(CHRISTMAS_D_DAY_DISCOUNT + "-${christmas}원")
-        if (weekday != NOTHING) println(WEEKDAY_DISCOUNT + "-${weekday}원")
-        if (weekend != NOTHING) println(WEEKEND_DISCOUNT + "-${weekend}원")
-        if (special != NOTHING) println(SPECIAL_DISCOUNT + "-${special}원")
-        if (gift) println(GIFT_EVENT + "-${MenuList.샴페인.price}원")
-        if(christmas == NOTHING &&
-            weekday == NOTHING &&
-            weekend == NOTHING &&
-            special == NOTHING &&
-            gift == false) println(MESSAGE_NOTHING_SERVICE)
+        if (amountBeforeDiscount >= CONDITIONAL_AMOUNT_RECIVED_TO_EVENT) {
+            if (christmas != NOTHING) println(CHRISTMAS_D_DAY_DISCOUNT + "-${christmas}원")
+            if (weekday != NOTHING) println(WEEKDAY_DISCOUNT + "-${weekday}원")
+            if (weekend != NOTHING) println(WEEKEND_DISCOUNT + "-${weekend}원")
+            if (special != NOTHING) println(SPECIAL_DISCOUNT + "-${special}원")
+            if (gift) println(GIFT_EVENT + "-${MenuList.샴페인.price}원")
+            if (christmas == NOTHING &&
+                weekday == NOTHING &&
+                weekend == NOTHING &&
+                special == NOTHING &&
+                gift == false
+            ) println(MESSAGE_NOTHING_SERVICE)
+            return
+        }
+        println(MESSAGE_NOTHING_SERVICE)
     }
 
     fun printTotalBenefits(totalBenefits: Int) {
         println(MESSAGE_TOTAL_BENEFITS_DETAILS)
-        if (totalBenefits !== ZERO_BENEFITS){
-            println("-${totalBenefits}원")
+        if(amountBeforeDiscount >= CONDITIONAL_AMOUNT_RECIVED_TO_EVENT) {
+            if (totalBenefits !== ZERO_BENEFITS){
+                println("-${totalBenefits}원")
+                return
+            }
+            println(MESSAGE_NOTHING_SERVICE)
             return
         }
         println(MESSAGE_NOTHING_SERVICE)
@@ -63,7 +73,12 @@ class OutputView(val orderList: Map<MenuList, Int>, var date: Int) {
 
     fun printAmountResult(discount: Int) {
         println(MESSAGE_AMOUNT_AFTER_DISCOUNT)
-        println("${amountBeforeDiscount-discount}원")
+        if(amountBeforeDiscount >= CONDITIONAL_AMOUNT_RECIVED_TO_EVENT){
+            println("${amountBeforeDiscount-discount}원")
+            return
+        }
+        println("$amountBeforeDiscount")
+
     }
 
     fun printEventBadge(badge: String) {
@@ -74,6 +89,8 @@ class OutputView(val orderList: Map<MenuList, Int>, var date: Int) {
     companion object {
         const val MESSAGE_SEE_BENEFITS_FRONT = "12월 "
         const val MESSAGE_SEE_BENEFITS_BACK = "일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!"
+
+        const val CONDITIONAL_AMOUNT_RECIVED_TO_EVENT = 10_000
 
         const val GIFT_MENU_CRITERIA_PRICE = 120_000
         val MESSAGE_GIFT_MENU_KIND = "${MenuList.샴페인} 1개"
