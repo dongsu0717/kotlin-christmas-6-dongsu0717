@@ -5,15 +5,15 @@ import christmas.data.MenuList
 import christmas.data.Restaurant
 
 class InputView {
-    var inputViewCondition = InputViewCondition()
-    var restaurant = Restaurant()
+    private var inputViewCondition = InputViewCondition()
+    private var restaurant = Restaurant()
 
     fun readDate(): Int {
         println(MESSAGE_GREETING)
         println(MESSAGE_WHEN_ARE_YOU_VISIT)
         while (true) {
             try {
-                var input = Console.readLine()
+                val input = Console.readLine()
                 inputViewCondition.dateCheck(input)
 
                 return input.toInt()
@@ -27,7 +27,7 @@ class InputView {
         println(MESSAGE_ORDER_MENU)
         while (true) {
             try {
-                var input = Console.readLine()
+                val input = Console.readLine()
                 val orderList = restaurant.order(input)
                 inputViewCondition.menuCheck(orderList)
                 return orderList
@@ -35,9 +35,6 @@ class InputView {
                 println(e.message)
             }
         }
-    }
-    fun a(orderList: Map<MenuList,Int>?): Map<MenuList, Int> {
-        return orderList!!
     }
 
     companion object {

@@ -15,7 +15,7 @@ class Amount() {
         special: Int,
         gift: Boolean,
     ): Int {
-        var giftPrice = when (gift) {
+        val giftPrice = when (gift) {
             true -> MenuList.샴페인.price
             false -> OutputView.NOTHING
         }

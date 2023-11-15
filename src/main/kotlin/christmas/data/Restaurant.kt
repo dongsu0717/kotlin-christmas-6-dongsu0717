@@ -15,8 +15,8 @@ class Restaurant {
             val menuName = parts[FIRST_INDEX].trim()
             val quantityStr = parts[SECOND_INDEX].trim()
 
-            var menu = inputViewCondition.menuInCheck(menuName)
-            var quantity = inputViewCondition.quantityCheck(quantityStr)
+            val menu = inputViewCondition.menuInCheck(menuName)
+            val quantity = inputViewCondition.quantityCheck(quantityStr)
             menu to quantity
         }
         return orderList

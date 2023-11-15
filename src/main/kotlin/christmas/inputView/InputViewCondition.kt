@@ -46,7 +46,7 @@ class InputViewCondition {
     fun menuCheck(orderList: Map<MenuList, Int>) {
         val orderListTOSet = orderList.keys.toSet()
         if (orderListTOSet.size != orderList.keys.size) {
-            throw IllegalArgumentException("$ERROR$ERROR_INCORRECT_ORDER")
+            throw IllegalArgumentException("$ERROR$ERROR_INCORRECT_ORDER\n$MENU_OVERLAP")
         }
         if (orderList.values.sum() > MAXIMUM_ORDER_NUMBER) {
             throw IllegalArgumentException("$ERROR$ERROR_INCORRECT_ORDER\n$MAXIMUM_ORDER_OF_NUMBER")

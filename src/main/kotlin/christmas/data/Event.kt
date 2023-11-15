@@ -17,7 +17,7 @@ class Event(val date: Int) {
 
     fun weekdayDiscount(orderList: Map<MenuList, Int>): Int {
         var count = 0
-        var disconutPrice = when (visitedDay) {
+        val disconutPrice = when (visitedDay) {
             DayOfWeek.SUNDAY, DayOfWeek.MONDAY, DayOfWeek.TUESDAY, DayOfWeek.WEDNESDAY, DayOfWeek.THURSDAY ->
                 WEEKDAY_DISCOUNT
 
@@ -34,7 +34,7 @@ class Event(val date: Int) {
 
     fun weekendDiscount(orderList: Map<MenuList, Int>): Int {
         var count = NOTHING
-        var disconutPrice = when (visitedDay) {
+        val disconutPrice = when (visitedDay) {
             DayOfWeek.FRIDAY, DayOfWeek.SATURDAY ->
                 WEEKEND_DISCOUNT
 
@@ -58,13 +58,18 @@ class Event(val date: Int) {
     }
 
     fun giftBadge(totalBenefits: Int): String {
-        return if (totalBenefits in BADGE_STANDARD_ZERO..<BADGE_STANDARD_STAR) {
-            BADGE_NOTHING
-        } else if (totalBenefits in BADGE_STANDARD_STAR..<BADGE_STANDARD_TREE) {
-            STAR
-        } else if (totalBenefits in BADGE_STANDARD_TREE..<BADGE_STANDARD_SANTA) {
-            TREE
-        } else SANTA
+        return when (totalBenefits) {
+            in BADGE_STANDARD_ZERO..<BADGE_STANDARD_STAR -> {
+                BADGE_NOTHING
+            }
+            in BADGE_STANDARD_STAR..<BADGE_STANDARD_TREE -> {
+                STAR
+            }
+            in BADGE_STANDARD_TREE..<BADGE_STANDARD_SANTA -> {
+                TREE
+            }
+            else -> SANTA
+        }
     }
 
     companion object {
