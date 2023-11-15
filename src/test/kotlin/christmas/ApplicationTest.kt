@@ -46,6 +46,18 @@ class ApplicationTest : NsTest() {
             assertThat(output()).contains("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.")
         }
     }
+    @Test
+    fun `이벤트 적용 안되는거 테스트`() {
+        assertSimpleTest {
+            run("26", "타파스-1,제로콜라-1")
+            assertThat(output()).contains(
+                ("<증정 메뉴>$LINE_SEPARATOR".toString() + "없음"),
+                ("<혜택 내역>$LINE_SEPARATOR".toString() + "없음"),
+                ("<총혜택 금액>$LINE_SEPARATOR".toString() + "없음"),
+                ("<12월 이벤트 배지>$LINE_SEPARATOR".toString() + "없음"),
+                )
+        }
+    }
 
     override fun runMain() {
         main()

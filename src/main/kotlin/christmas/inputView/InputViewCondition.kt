@@ -1,6 +1,5 @@
 package christmas.inputView
 
-import christmas.data.Amount
 import christmas.data.MenuList
 
 
@@ -13,26 +12,16 @@ class InputViewCondition {
         if (!(input.toInt() in MINIMUM_DAY..MAXIMUM_DAY)){
             throw IllegalArgumentException(ERROR + ERR0R_INCORRECT_DATE)
         }
-        if (input.isBlank()) {
-            throw IllegalArgumentException(ERROR + ERROR_BLACK)
-        }
-        if (input.isEmpty()) {
-            throw IllegalArgumentException(ERROR + ERROR_EMPTY)
-        }
     }
 
-    fun numCheck(order: Map<MenuList,String>){
+    fun typeCheck(order: Map<MenuList,String>){
         if (order.any { !it.value.matches(Regex("\\d+")) }) {
             throw IllegalArgumentException(ERROR + ERROR_INCORRECT_ORDER )
         }
     }
 
-    //메뉴판에 없는 메뉴 주문 추가, 형식이 다른경우 오류, 10000이상 이벤트 추가, 여러가지 테스트 코드 추가
+    //메뉴판에 없는 메뉴 주문 추가, 형식이 다른경우 오류, 여러가지 테스트 코드 추가
     fun menuCheck(orderList: Map<MenuList,Int>) {
-        if (orderList.isEmpty()) {
-            throw IllegalArgumentException(ERROR + ERROR_BLACK)
-        }
-
         if (orderList.values.sum() > MAXIMUM_ORDER_NUMBER) {
             throw IllegalArgumentException(ERROR + ERROR_MAXIMUM_ORDER_OF_NUMBER)
         }
@@ -48,10 +37,6 @@ class InputViewCondition {
         if (orderList.keys.distinct().size != orderList.keys.size) {
             throw IllegalArgumentException(ERROR + ERROR_INCORRECT_ORDER)
         }
-
-        if (orderList.keys.any { it !in MenuList.values() }) {
-            throw IllegalArgumentException(ERROR + ERROR_NOT_IN_MENU)
-        }
     }
 
 
@@ -65,14 +50,10 @@ class InputViewCondition {
 
         const val ERROR = "[ERROR] "
         const val ERR0R_INCORRECT_DATE = "유효하지 않은 날짜입니다. 다시 입력해 주세요."
-        const val ERROR_BLACK = "공백없이 입력해 주세요"
-        const val ERROR_EMPTY = "아무것도 입력하지 않았습니다. 다시 입력해주세요"
+
 
         const val ERROR_MAXIMUM_ORDER_OF_NUMBER = "최대 주문 갯수는 20개입니다."
-        const val ERROR_MINIMUM_ORDER_OF_NUMBER = "주문 갯수는 1개 이상이어야 합니다."
         const val ERROR_NOT_ONLY_DRINK = "음료만 주문할 수 없습니다."
-        const val ERROR_REDUNDANT_ORDER = "중복해서 주문할 수 없습니다."
-        const val ERROR_NOT_IN_MENU = "없는 메뉴는 주문 할 수 없습니다."
         const val ERROR_INCORRECT_ORDER = "유효하지 않은 주문입니다. 다시 입력해 주세요."
 
     }

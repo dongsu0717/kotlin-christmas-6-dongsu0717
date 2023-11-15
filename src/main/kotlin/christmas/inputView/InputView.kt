@@ -29,7 +29,7 @@ class InputView {
             try {
                 var input = Console.readLine()
                 val order = restaurant.order(input)
-                inputViewCondition.numCheck(order)
+                inputViewCondition.typeCheck(order)
 
                 val orderList = restaurant.ValueToInt(order)
                 inputViewCondition.menuCheck(orderList)
