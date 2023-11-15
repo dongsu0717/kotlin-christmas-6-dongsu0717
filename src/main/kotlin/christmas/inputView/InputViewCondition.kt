@@ -66,7 +66,7 @@ class InputViewCondition {
         const val MAXIMUM_ORDER_NUMBER = 20
         const val MINIMUM_ORDER_NUMBER = 1
 
-        val MENULIST_TYPE_DRINK = "음료"
+        const val MENULIST_TYPE_DRINK = "음료"
 
         const val ERROR = "[ERROR] "
         const val ERR0R_INCORRECT_DATE = "유효하지 않은 날짜입니다. 다시 입력해 주세요."

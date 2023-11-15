@@ -4,12 +4,12 @@ import java.time.DayOfWeek
 import java.time.LocalDate
 
 class Event(val date: Int) {
-    var inputDate = LocalDate.of(YEAR, MONTH, date)
-    var visitedDay = inputDate.dayOfWeek
+    private var inputDate = LocalDate.of(YEAR, MONTH, date)
+    private var visitedDay = inputDate.dayOfWeek
 
     fun dDayChristmas(): Int {
         var discountPrice = NOTHING_DISCOUNT
-        if (date >= THE_FIRST_DAY_DECEMBER && date <= CHRISTMAS_DAY) {
+        if (date in THE_FIRST_DAY_DECEMBER..CHRISTMAS_DAY) {
             discountPrice = D_DAY_STANDARD_DISCOUNT + (date - 1) * D_DAY_ADD_DISCOUNT
         }
         return discountPrice

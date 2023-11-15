@@ -3,9 +3,9 @@ package christmas.outputView
 import christmas.data.Amount
 import christmas.data.MenuList
 
-class OutputView(val orderList: Map<MenuList, Int>, var date: Int) {
-    var amount = Amount()
-    var amountBeforeDiscount = amount.beforeDiscount(orderList)
+class OutputView(private val orderList: Map<MenuList, Int>, private var date: Int) {
+    private var amount = Amount()
+    private var amountBeforeDiscount = amount.beforeDiscount(orderList)
 
 
     fun printMenu() {
@@ -50,8 +50,7 @@ class OutputView(val orderList: Map<MenuList, Int>, var date: Int) {
             if (christmas == NOTHING &&
                 weekday == NOTHING &&
                 weekend == NOTHING &&
-                special == NOTHING &&
-                gift == false
+                special == NOTHING && !gift
             ) println(MESSAGE_NOTHING_SERVICE)
             return
         }

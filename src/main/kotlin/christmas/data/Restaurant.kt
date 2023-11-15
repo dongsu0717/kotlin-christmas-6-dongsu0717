@@ -3,7 +3,7 @@ package christmas.data
 import christmas.inputView.InputViewCondition
 
 class Restaurant {
-    val inputViewCondition = InputViewCondition()
+    private val inputViewCondition = InputViewCondition()
     fun order(input: String): Map<MenuList, Int> {
         val menuEntries = input.split(",")
         inputViewCondition.overlapCheck(menuEntries)
