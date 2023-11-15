@@ -28,17 +28,16 @@ class InputView {
         while (true) {
             try {
                 var input = Console.readLine()
-                val order = restaurant.order(input)
-                inputViewCondition.typeCheck(order)
-
-                val orderList = restaurant.ValueToInt(order)
+                val orderList = restaurant.order(input)
                 inputViewCondition.menuCheck(orderList)
-
                 return orderList
             } catch (e: IllegalArgumentException) {
                 println(e.message)
             }
         }
+    }
+    fun a(orderList: Map<MenuList,Int>?): Map<MenuList, Int> {
+        return orderList!!
     }
 
     companion object {

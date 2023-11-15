@@ -1,19 +1,29 @@
 package christmas.data
 
-class Restaurant {
-    fun order(input: String): Map<MenuList, String> {
-        val menuEntries = input.split(",")
-        return menuEntries.map { entry ->
-            val parts = entry.split("-")
-            val menuName = parts[0].trim()
-            val quantity = parts[1].trim()
+import christmas.inputView.InputViewCondition
 
-            val menu = MenuList.valueOf(menuName)
+class Restaurant {
+    val inputViewCondition = InputViewCondition()
+    fun order(input: String): Map<MenuList, Int> {
+        val menuEntries = input.split(",")
+        inputViewCondition.overlapCheck(menuEntries)
+
+        val orderList = menuEntries.associate { entry ->
+            val parts = entry.split("-")
+            inputViewCondition.inputTypeCheck(parts)
+
+            val menuName = parts[FIRST_INDEX].trim()
+            val quantityStr = parts[SECOND_INDEX].trim()
+
+            var menu = inputViewCondition.menuInCheck(menuName)
+            var quantity = inputViewCondition.quantityCheck(quantityStr)
             menu to quantity
-        }.toMap()
+        }
+        return orderList
     }
 
-    fun ValueToInt(orderList: Map<MenuList, String>): Map<MenuList, Int> {
-        return orderList.mapValues { it.value.toInt() }
+    companion object {
+        const val FIRST_INDEX = 0
+        const val SECOND_INDEX = 1
     }
 }

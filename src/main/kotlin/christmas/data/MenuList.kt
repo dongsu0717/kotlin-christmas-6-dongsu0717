@@ -12,5 +12,11 @@ enum class MenuList(val type: String,val price: Int) {
     아이스크림("디저트",5_000),
     제로콜라("음료",3_000),
     레드와인("음료",60_000),
-    샴페인("음료",25_000)
+    샴페인("음료",25_000);
+
+    companion object {
+        fun findByName(name: String): MenuList {
+            return values().find { it.name == name }!!
+        }
+    }
 }

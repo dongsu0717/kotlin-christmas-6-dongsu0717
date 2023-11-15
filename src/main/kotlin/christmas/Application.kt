@@ -3,6 +3,6 @@ package christmas
 
 
 fun main() {
-    var christmasGame = ChristmasGame()
+    val christmasGame = ChristmasGame()
     christmasGame.play()
 }
